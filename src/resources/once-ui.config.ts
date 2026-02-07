@@ -85,6 +85,8 @@ const schema: SchemaConfig = {
 
 const sameAs: SameAsConfig = {
   linkedin: "https://www.linkedin.com/in/khalid-k-shaikh/",
+  threads: "",
+  discord: "",
 };
 
 const socialSharing: SocialSharingConfig = {
