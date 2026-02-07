@@ -4,24 +4,21 @@ import { Line, Row, Text } from "@once-ui-system/core";
 const person: Person = {
   firstName: "Khalid",
   lastName: "Shaikh",
-  name: `Khalid Shaikh`,
+  name: "Khalid Shaikh",
   role: "Product Security Engineer",
   avatar: "/images/avatar.jpg",
   email: "khalid06188@gmail.com",
-  location: "America/Los_Angeles", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English"], // optional: Leave the array empty if you don't want to display languages
+  location: "America/Los_Angeles",
+  languages: ["English"],
 };
 
 const newsletter: Newsletter = {
   display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  description: <>My weekly newsletter</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
   {
     name: "GitHub",
     icon: "github",
@@ -31,7 +28,7 @@ const social: Social = [
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: https://www.linkedin.com/in/khalid-k-shaikh/",
+    link: "https://www.linkedin.com/in/khalid-k-shaikh/",
     essential: true,
   },
   {
@@ -56,16 +53,19 @@ const home: Home = {
         <strong className="ml-4">Featured</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Project
+          Projects
         </Text>
       </Row>
     ),
-    href: "/work", // keep simple for now
+    href: "/work",
   },
   subline: (
     <>
-      I’m Khalid, a <Text as="span" size="xl" weight="strong">Product Security Engineer</Text> with hands-on experience in{" "}
-      AppSec, vulnerability triage (PSIRT), secure code review, and WAF rule engineering.
+      I’m Khalid, a{" "}
+      <Text as="span" size="xl" weight="strong">
+        Product Security Engineer
+      </Text>{" "}
+      with hands-on experience in AppSec, vulnerability triage (PSIRT), secure code review, and WAF rule engineering.
       <br />
       I focus on practical security outcomes: reducing risk, preventing abuse, and improving resilience in production systems.
     </>
@@ -76,7 +76,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role}`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -86,138 +86,111 @@ const about: About = {
   },
   calendar: {
     display: false,
-    link: "https://cal.com",
+    link: "",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-      I’m a Product Security Engineer focused on application security and vulnerability management.
-      I’ve assessed and triaged CVEs for product impact, collaborated with engineering on remediation,
-      performed secure code reviews, and supported incident response and WAF tuning for production web apps and APIs.
+        I’m a Product Security Engineer focused on application security and vulnerability management. I’ve assessed and triaged CVEs
+        for product impact, collaborated with engineering on remediation, performed secure code reviews, and supported incident response
+        and WAF tuning for production web apps and APIs.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "A10 Networks, Inc",
+        timeframe: "Jun 2025 – Present",
+        role: "Product Security Engineer",
         achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
+          <>Performed dual responsibilities across Product Security and SOC functions: incident investigation, log analysis, and response coordination.</>,
+          <>Assessed 100+ CVEs for product impact and coordinated remediation with 10+ engineering teams via PSIRT workflows.</>,
+          <>Conducted code reviews and manual validation testing to confirm patch effectiveness and secure coding alignment.</>,
+          <>Used n8n to automate threat simulation inputs and detection validation, improving WAF/SIEM feedback loops.</>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "ThreatX (A10 Networks, Inc)",
+        timeframe: "Jun 2024 – Jun 2025",
+        role: "Security Engineer",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          <>Developed and optimized NGINX firewall rule sets to defend 100+ API endpoints against OWASP Top 10 threats.</>,
+          <>Handled monitoring and incident response for 200+ web apps and APIs; supported customers while tracking new CVEs.</>,
+          <>Automated OpenVAS deployment using Terraform on DigitalOcean, cutting setup time ~80% and expanding coverage to 50+ assets.</>,
+          <>Built dashboards using MongoDB, Prometheus, Grafana, and Metabase to visualize traffic metrics and threat trends.</>,
+          <>Developed internal tools (Python/Bash/Terraform) for blacklist updates, log parsing, and IP enrichment workflows.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Synopsys Inc",
+        timeframe: "May 2023 – Aug 2023",
+        role: "Security Engineer Intern",
+        achievements: [
+          <>Performed white-box security assessments on 7 client web apps and produced reports with remediation guidance.</>,
+          <>Built a CTF training platform (CTFd) on AWS; provisioned infrastructure with Terraform (EC2, RDS, S3).</>,
+          <>Supported threat modeling and architecture reviews with senior consultants.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Tracelay Networks",
+        timeframe: "Jun 2021 – Sept 2021",
+        role: "Cyber Security Engineer Intern",
+        achievements: [
+          <>Threat hunted across large event volumes using Wazuh SIEM and identified anomalies across multiple client environments.</>,
+          <>Supported SOC 2 compliance by collecting logs, validating access controls, and assisting remediation across multiple clients.</>,
+          <>Helped assess access policies for Zero Trust improvements within an MXDR platform.</>,
         ],
         images: [],
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Education",
     institutions: [
-      {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
-      },
+      { name: "Syracuse University (M.S. Cyber Security)", description: <>May 2024</> },
+      { name: "Mumbai University (B.E. Information Technology)", description: <>Jun 2022</> },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
-        ),
+        title: "AppSec & PSIRT",
+        description: <>Secure code review, OWASP Top 10, CVE triage, vulnerability assessment, API security, WAF configuration.</>,
         tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
+          { name: "AppSec", icon: "github" },
+          { name: "PSIRT", icon: "github" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Next.js",
-        description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
-        ),
+        title: "Cloud & Infrastructure",
+        description: <>AWS, NGINX, Terraform, Docker, Kubernetes, Prometheus/Grafana, MongoDB.</>,
         tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
+          { name: "AWS", icon: "github" },
+          { name: "Kubernetes", icon: "github" },
+          { name: "Terraform", icon: "github" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+        images: [],
+      },
+      {
+        title: "Security Tooling",
+        description: <>Burp Suite, Splunk, Nmap, Wireshark, Nessus, Trivy, Qualys, SIEM/SOAR.</>,
+        tags: [
+          { name: "Burp Suite", icon: "github" },
+          { name: "Splunk", icon: "github" },
         ],
+        images: [],
       },
     ],
   },
@@ -226,70 +199,23 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Security notes",
+  description: `Writing about AppSec, PSIRT, and practical security work.`,
 };
 
 const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Selected security projects and engineering work by ${person.name}`,
 };
 
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
+  title: `Gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
+  images: [],
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };
