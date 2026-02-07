@@ -11,7 +11,7 @@ import {
   SocialSharingConfig,
   StyleConfig,
 } from "@/types";
-import { home } from "./index";
+import { home } from "./content";
 
 const baseURL: string = "https://khalid-portfolio.vercel.app";
 
