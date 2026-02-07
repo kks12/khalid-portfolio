@@ -89,6 +89,7 @@ const sameAs: SameAsConfig = {
   discord: "",
 };
 
+
 const socialSharing: SocialSharingConfig = {
   display: false,
   platforms: {
