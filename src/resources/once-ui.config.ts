@@ -1,229 +1,221 @@
-import {
-  DataStyleConfig,
-  DisplayConfig,
-  EffectsConfig,
-  FontsConfig,
-  MailchimpConfig,
-  ProtectedRoutesConfig,
-  RoutesConfig,
-  SameAsConfig,
-  SchemaConfig,
-  SocialSharingConfig,
-  StyleConfig,
-} from "@/types";
-import { home } from "./index";
+import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { Line, Row, Text } from "@once-ui-system/core";
 
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://khalid-portfolio.vercel.app";
-
-const routes: RoutesConfig = {
-  "/": true,
-  "/about": true,
-  "/work": true,
-  "/blog": false,
-  "/gallery": false,
-};
-
-const display: DisplayConfig = {
-  location: false,
-  time: false,
-  themeSwitcher: true,
-};
-
-// Enable password protection on selected routes
-// Set password in the .env file, refer to .env.example
-const protectedRoutes: ProtectedRoutesConfig = {};
-
-
-// Import and set font for each variant
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
-
-const heading = Geist({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const body = Geist({
-  variable: "--font-body",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const label = Geist({
-  variable: "--font-label",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const code = Geist_Mono({
-  variable: "--font-code",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const fonts: FontsConfig = {
-  heading: heading,
-  body: body,
-  label: label,
-  code: code,
-};
-
-// default customization applied to the HTML in the main layout.tsx
-const style: StyleConfig = {
-  theme: "system", // dark | light | system
-  neutral: "gray", // sand | gray | slate | custom
-  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  solid: "contrast", // color | contrast
-  solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative
-  surface: "translucent", // filled | translucent
-  transition: "all", // all | micro | macro
-  scaling: "100", // 90 | 95 | 100 | 105 | 110
-};
-
-const dataStyle: DataStyleConfig = {
-  variant: "gradient", // flat | gradient | outline
-  mode: "categorical", // categorical | divergent | sequential
-  height: 24, // default chart height
-  axis: {
-    stroke: "var(--neutral-alpha-weak)",
-  },
-  tick: {
-    fill: "var(--neutral-on-background-weak)",
-    fontSize: 11,
-    line: false,
-  },
-};
-
-const effects: EffectsConfig = {
-  mask: {
-    cursor: false,
-    x: 50,
-    y: 0,
-    radius: 100,
-  },
-  gradient: {
-    display: false,
-    opacity: 100,
-    x: 50,
-    y: 60,
-    width: 100,
-    height: 50,
-    tilt: 0,
-    colorStart: "accent-background-strong",
-    colorEnd: "page-background",
-  },
-  dots: {
-    display: true,
-    opacity: 40,
-    size: "2",
-    color: "brand-background-strong",
-  },
-  grid: {
-    display: false,
-    opacity: 100,
-    color: "neutral-alpha-medium",
-    width: "0.25rem",
-    height: "0.25rem",
-  },
-  lines: {
-    display: false,
-    opacity: 100,
-    color: "neutral-alpha-weak",
-    size: "16",
-    thickness: 1,
-    angle: 45,
-  },
-};
-
-const mailchimp: MailchimpConfig = {
-  action: "https://url/subscribe/post?parameters",
-  effects: {
-    mask: {
-      cursor: true,
-      x: 50,
-      y: 0,
-      radius: 100,
-    },
-    gradient: {
-      display: true,
-      opacity: 90,
-      x: 50,
-      y: 0,
-      width: 50,
-      height: 50,
-      tilt: 0,
-      colorStart: "accent-background-strong",
-      colorEnd: "static-transparent",
-    },
-    dots: {
-      display: true,
-      opacity: 20,
-      size: "2",
-      color: "brand-on-background-weak",
-    },
-    grid: {
-      display: false,
-      opacity: 100,
-      color: "neutral-alpha-medium",
-      width: "0.25rem",
-      height: "0.25rem",
-    },
-    lines: {
-      display: false,
-      opacity: 100,
-      color: "neutral-alpha-medium",
-      size: "16",
-      thickness: 1,
-      angle: 90,
-    },
-  },
-};
-
-// default schema data
-const schema: SchemaConfig = {
-  logo: "",
-  type: "Person",
+const person: Person = {
+  firstName: "Khalid",
+  lastName: "Shaikh",
   name: "Khalid Shaikh",
-  description: home.description,
+  role: "Product Security Engineer",
+  avatar: "/images/avatar.jpg",
   email: "khalid06188@gmail.com",
+  location: "America/Los_Angeles",
+  languages: ["English"],
 };
 
-// social links
-const sameAs: SameAsConfig = {
-  linkedin: "https://www.linkedin.com/in/khalid-k-shaikh/"
+const newsletter: Newsletter = {
+  display: false,
+  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  description: <>My weekly newsletter</>,
 };
 
-// social sharing configuration for blog posts
-const socialSharing: SocialSharingConfig = {
-  display: true,
-  platforms: {
-    x: true,
-    linkedin: true,
-    facebook: false,
-    pinterest: false,
-    whatsapp: false,
-    reddit: false,
-    telegram: false,
-    email: true,
-    copyLink: true,
+const social: Social = [
+  {
+    name: "GitHub",
+    icon: "github",
+    link: "https://github.com/kks12",
+    essential: true,
+  },
+  {
+    name: "LinkedIn",
+    icon: "linkedin",
+    link: "https://www.linkedin.com/in/khalid-k-shaikh/",
+    essential: true,
+  },
+  {
+    name: "Email",
+    icon: "email",
+    link: `mailto:${person.email}`,
+    essential: true,
+  },
+];
+
+const home: Home = {
+  path: "/",
+  image: "/images/og/home.jpg",
+  label: "Home",
+  title: `${person.name} – ${person.role}`,
+  description: `Portfolio of ${person.name}, a ${person.role} focused on application security, PSIRT, and cloud security.`,
+  headline: <>Securing web apps and cloud systems</>,
+  featured: {
+    display: true,
+    title: (
+      <Row gap="12" vertical="center">
+        <strong className="ml-4">Featured</strong>{" "}
+        <Line background="brand-alpha-strong" vert height="20" />
+        <Text marginRight="4" onBackground="brand-medium">
+          Projects
+        </Text>
+      </Row>
+    ),
+    href: "/work",
+  },
+  subline: (
+    <>
+      I’m Khalid, a{" "}
+      <Text as="span" size="xl" weight="strong">
+        Product Security Engineer
+      </Text>{" "}
+      with hands-on experience in AppSec, vulnerability triage (PSIRT), secure code review, and WAF rule engineering.
+      <br />
+      I focus on practical security outcomes: reducing risk, preventing abuse, and improving resilience in production systems.
+    </>
+  ),
+};
+
+const about: About = {
+  path: "/about",
+  label: "About",
+  title: `About – ${person.name}`,
+  description: `Meet ${person.name}, ${person.role}`,
+  tableOfContent: {
+    display: true,
+    subItems: false,
+  },
+  avatar: {
+    display: true,
+  },
+  calendar: {
+    display: false,
+    link: "",
+  },
+  intro: {
+    display: true,
+    title: "Introduction",
+    description: (
+      <>
+        I’m a Product Security Engineer focused on application security and vulnerability management. I’ve assessed and triaged CVEs
+        for product impact, collaborated with engineering on remediation, performed secure code reviews, and supported incident response
+        and WAF tuning for production web apps and APIs.
+      </>
+    ),
+  },
+  work: {
+    display: true,
+    title: "Work Experience",
+    experiences: [
+      {
+        company: "A10 Networks, Inc",
+        timeframe: "Jun 2025 – Present",
+        role: "Product Security Engineer",
+        achievements: [
+          <>Performed dual responsibilities across Product Security and SOC functions: incident investigation, log analysis, and response coordination.</>,
+          <>Assessed 100+ CVEs for product impact and coordinated remediation with 10+ engineering teams via PSIRT workflows.</>,
+          <>Conducted code reviews and manual validation testing to confirm patch effectiveness and secure coding alignment.</>,
+          <>Used n8n to automate threat simulation inputs and detection validation, improving WAF/SIEM feedback loops.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "ThreatX (A10 Networks, Inc)",
+        timeframe: "Jun 2024 – Jun 2025",
+        role: "Security Engineer",
+        achievements: [
+          <>Developed and optimized NGINX firewall rule sets to defend 100+ API endpoints against OWASP Top 10 threats.</>,
+          <>Handled monitoring and incident response for 200+ web apps and APIs; supported customers while tracking new CVEs.</>,
+          <>Automated OpenVAS deployment using Terraform on DigitalOcean, cutting setup time ~80% and expanding coverage to 50+ assets.</>,
+          <>Built dashboards using MongoDB, Prometheus, Grafana, and Metabase to visualize traffic metrics and threat trends.</>,
+          <>Developed internal tools (Python/Bash/Terraform) for blacklist updates, log parsing, and IP enrichment workflows.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Synopsys Inc",
+        timeframe: "May 2023 – Aug 2023",
+        role: "Security Engineer Intern",
+        achievements: [
+          <>Performed white-box security assessments on 7 client web apps and produced reports with remediation guidance.</>,
+          <>Built a CTF training platform (CTFd) on AWS; provisioned infrastructure with Terraform (EC2, RDS, S3).</>,
+          <>Supported threat modeling and architecture reviews with senior consultants.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Tracelay Networks",
+        timeframe: "Jun 2021 – Sept 2021",
+        role: "Cyber Security Engineer Intern",
+        achievements: [
+          <>Threat hunted across large event volumes using Wazuh SIEM and identified anomalies across multiple client environments.</>,
+          <>Supported SOC 2 compliance by collecting logs, validating access controls, and assisting remediation across multiple clients.</>,
+          <>Helped assess access policies for Zero Trust improvements within an MXDR platform.</>,
+        ],
+        images: [],
+      },
+    ],
+  },
+  studies: {
+    display: true,
+    title: "Education",
+    institutions: [
+      { name: "Syracuse University (M.S. Cyber Security)", description: <>May 2024</> },
+      { name: "Mumbai University (B.E. Information Technology)", description: <>Jun 2022</> },
+    ],
+  },
+  technical: {
+    display: true,
+    title: "Technical skills",
+    skills: [
+      {
+        title: "AppSec & PSIRT",
+        description: <>Secure code review, OWASP Top 10, CVE triage, vulnerability assessment, API security, WAF configuration.</>,
+        tags: [
+          { name: "AppSec", icon: "github" },
+          { name: "PSIRT", icon: "github" },
+        ],
+        images: [],
+      },
+      {
+        title: "Cloud & Infrastructure",
+        description: <>AWS, NGINX, Terraform, Docker, Kubernetes, Prometheus/Grafana, MongoDB.</>,
+        tags: [
+          { name: "AWS", icon: "github" },
+          { name: "Kubernetes", icon: "github" },
+          { name: "Terraform", icon: "github" },
+        ],
+        images: [],
+      },
+      {
+        title: "Security Tooling",
+        description: <>Burp Suite, Splunk, Nmap, Wireshark, Nessus, Trivy, Qualys, SIEM/SOAR.</>,
+        tags: [
+          { name: "Burp Suite", icon: "github" },
+          { name: "Splunk", icon: "github" },
+        ],
+        images: [],
+      },
+    ],
   },
 };
 
-export {
-  display,
-  mailchimp,
-  routes,
-  protectedRoutes,
-  baseURL,
-  fonts,
-  style,
-  schema,
-  sameAs,
-  socialSharing,
-  effects,
-  dataStyle,
+const blog: Blog = {
+  path: "/blog",
+  label: "Blog",
+  title: "Security notes",
+  description: `Writing about AppSec, PSIRT, and practical security work.`,
 };
+
+const work: Work = {
+  path: "/work",
+  label: "Work",
+  title: `Projects – ${person.name}`,
+  description: `Selected security projects and engineering work by ${person.name}`,
+};
+
+const gallery: Gallery = {
+  path: "/gallery",
+  label: "Gallery",
+  title: `Gallery – ${person.name}`,
+  description: `A photo collection by ${person.name}`,
+  images: [],
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery };
